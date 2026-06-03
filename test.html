@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="heart">🏳️‍🌈</div>
+
+    <div id="message" class="hidden">
+        Eu já sabia que tu era 🌈
+        <img src="therock.gif" alt="The Rock" width="300">
+    </div>
+
+    <script>const heart = document.getElementById("heart");
+const message = document.getElementById("message");
+
+let clicks = 0;
+
+function moveHeart() {
+    const maxX = window.innerWidth - 60;
+    const maxY = window.innerHeight - 60;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    heart.style.left = x + "px";
+    heart.style.top = y + "px";
+}
+
+moveHeart();
+
+heart.addEventListener("click", () => {
+
+    clicks++;
+
+    if (clicks < 3) {
+        moveHeart();
+    } else {
+        heart.textContent = "🍭";
+        message.classList.remove("hidden");
+    }
+});</script>
+    <style>body{
+    margin:0;
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#111;
+}
+
+#heart{
+    position:absolute;
+    font-size:50px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+#heart:hover{
+    transform:scale(1.2);
+}
+
+.hidden{
+    display:none;
+}
+
+#message{
+    color:white;
+    font-size:2rem;
+    text-align:center;
+}</style>
+</body>
+</html>
